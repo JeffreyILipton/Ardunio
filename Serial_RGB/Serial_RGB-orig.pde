@@ -8,7 +8,7 @@ int h_int;
 float h;
 int r=0, g=0, b=0;
 
-void h2rgb(float h, int &amp;R, int &amp;G, int &amp;B);
+void h2rgb(float h, int &R, int &G, int &B);
 void colorFade();
 
 void setup() {
@@ -22,7 +22,7 @@ void setup() {
 
 void loop() {
   
-  if(Serial.available() &gt;= 2){
+  if(Serial.available() >= 2){
     
     switch( byte( Serial.read() )) {
       case 'r':

@@ -3,9 +3,9 @@ import serial
 # Setup the Serial Object
 ser = serial.Serial()
 # Set the Serial Port to use
-ser.setPort("COM5")
+ser.setPort("COM9")
 # Set the Baudrate (Arduino Sketch is expecting 57600 for smooth transitions in the GUI)
-ser.baudrate = 57600
+ser.baudrate = 115200
 # Open the Serial Connection
 ser.open()
 loopVar = True
