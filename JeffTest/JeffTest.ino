@@ -204,8 +204,17 @@ int getButton1State(){
 
 void loop()
 {
-  int state = getButton1State();
-  setLED1(state);
+  //int state = getButton1State();
+  
+  int touchcount = touch_robot.capacitiveSensor(5);
+  if(touchcount>750){
+    setLED1(LOW);
+  }else{
+    setLED1(HIGH);
+  }
+  
+  
+  //setLED1(state);
 }
 
 
