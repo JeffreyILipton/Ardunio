@@ -110,8 +110,18 @@ void init_joystick(int threshold);
 void setLED1(int ledState){
     if(ledState==0){
         digitalWrite(LED1_RED, 1);
-	digitalWrite(LED1_GREEN, 1);
-	digitalWrite(LED1_BLUE, 0);
+     	digitalWrite(LED1_GREEN, 1);
+	for(int i=255;i>180;i--){
+            analogWrite(LED1_BLUE, i);
+            delay(20);
+        }
+        delay(100);
+        digitalWrite(LED1_BLUE, 1);
+        for(int i=255;i>180;i--){
+            analogWrite(LED1_GREEN, i);
+            delay(20);
+        }
+        delay(100);
     }else{
         digitalWrite(LED1_RED, 1);
 	digitalWrite(LED1_GREEN, 1);
