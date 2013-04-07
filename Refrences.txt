@@ -1,0 +1,8 @@
+CapSense:
+http://playground.arduino.cc//Main/CapacitiveSensor?from=Main.CapSense
+
+ADK:
+http://developer.android.com/tools/adk/adk.html
+
+Arduino:
+http://arduino.cc/en/Tutorial/DigitalReadSerial
