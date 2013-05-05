@@ -23,7 +23,8 @@ void loop()
     // footswitch pressed
     Serial.println("Sending IR signal");
   
-    SendCanonCode();
+    SendTVOnCode();
+    //SendCanonCode();
      
     delay(3*1000);  // wait 3 seconds (* 1000 milliseconds)
   }
@@ -49,6 +50,82 @@ void pulseIR(long microsecs) {
   
   sei();  // this turns them back on
 }
+
+void SendTVOnCode(){
+pulseIR(8840);
+delayMicroseconds(4380);
+pulseIR(580);
+delayMicroseconds(560);
+pulseIR(540);
+delayMicroseconds(540);
+pulseIR(560);
+delayMicroseconds(1620);
+pulseIR(600);
+delayMicroseconds(540);
+pulseIR(560);
+delayMicroseconds(540);
+pulseIR(560);
+delayMicroseconds(540);
+pulseIR(560);
+delayMicroseconds(560);
+pulseIR(540);
+delayMicroseconds(560);
+pulseIR(540);
+delayMicroseconds(1640);
+pulseIR(580);
+delayMicroseconds(1600);
+pulseIR(600);
+delayMicroseconds(540);
+pulseIR(560);
+delayMicroseconds(1620);
+pulseIR(580);
+delayMicroseconds(1620);
+pulseIR(580);
+delayMicroseconds(1620);
+pulseIR(580);
+delayMicroseconds(1620);
+pulseIR(580);
+delayMicroseconds(1620);
+pulseIR(580);
+delayMicroseconds(560);
+pulseIR(560);
+delayMicroseconds(1600);
+pulseIR(580);
+delayMicroseconds(560);
+pulseIR(540);
+delayMicroseconds(560);
+pulseIR(560);
+delayMicroseconds(540);
+pulseIR(560);
+delayMicroseconds(560);
+pulseIR(540);
+delayMicroseconds(560);
+pulseIR(560);
+delayMicroseconds(540);
+pulseIR(560);
+delayMicroseconds(1620);
+pulseIR(580);
+delayMicroseconds(540);
+pulseIR(560);
+delayMicroseconds(1620);
+pulseIR(580);
+delayMicroseconds(1620);
+pulseIR(580);
+delayMicroseconds(1620);
+pulseIR(580);
+delayMicroseconds(1620);
+pulseIR(580);
+delayMicroseconds(1620);
+pulseIR(580);
+delayMicroseconds(1620);
+pulseIR(580);
+delayMicroseconds(39060);
+pulseIR(8860);
+delayMicroseconds(2180);
+pulseIR(580);
+
+}
+
 
 void SendCanonCode() {
   // This is the code for my particular Canon, for others use the tutorial

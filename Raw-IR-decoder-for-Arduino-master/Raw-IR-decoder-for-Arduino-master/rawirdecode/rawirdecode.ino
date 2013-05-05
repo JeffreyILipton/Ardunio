@@ -1,12 +1,15 @@
+
 /* Raw IR decoder sketch!
-This sketch/program uses the Arduno and a PNA4602 to
-decode IR received. This can be used to make a IR receiver
-(by looking for a particular code)
-or transmitter (by pulsing an IR LED at ~38KHz for the
-durations detected
-Code is public domain, check out www.ladyada.net and adafruit.com
-for more tutorials!
-*/
+ 
+ This sketch/program uses the Arduno and a PNA4602 to 
+ decode IR received. This can be used to make a IR receiver
+ (by looking for a particular code)
+ or transmitter (by pulsing an IR LED at ~38KHz for the
+ durations detected 
+ 
+ Code is public domain, check out www.ladyada.net and adafruit.com
+ for more tutorials! 
+ */
 
 // We need to use the 'raw' pin reading methods
 // because timing is very important here and the digitalRead()
@@ -14,21 +17,8 @@ for more tutorials!
 //uint8_t IRpin = 2;
 // Digital pin #2 is the same as Pin D2 see
 // http://arduino.cc/en/Hacking/PinMapping168 for the 'raw' pin mapping
-#include <Wire.h>
-#include <Servo.h>
-
-#include <Max3421e.h>
-#include <Usb.h>
-#include <AndroidAccessory.h>
-
-
-
-
-#define IRpin_PIN PINE
-#define IRpin A6
-// for MEGA use these!
-//#define IRpin_PIN PINE
-//#define IRpin 4
+#define IRpin_PIN      PIND
+#define IRpin          2
 
 // the maximum pulse we'll listen for - 65 milliseconds is a long time
 #define MAXPULSE 65000
@@ -36,39 +26,29 @@ for more tutorials!
 // what our timing resolution should be, larger is better
 // as its more 'precise' - but too large and you wont get
 // accurate timing
-#define RESOLUTION 20
+#define RESOLUTION 20 
 
 // we will store up to 100 pulse pairs (this is -a lot-)
-uint16_t pulses[100][2]; // pair is high and low pulse
+uint16_t pulses[100][2];  // pair is high and low pulse 
 uint8_t currentpulse = 0; // index for pulses we're storing
 
 void setup(void) {
-  pinMode(IRpin, INPUT);
-  digitalWrite(IRpin, HIGH);
   Serial.begin(9600);
   Serial.println("Ready to decode IR!");
-  
 }
-int maxtime = 100;
+
 void loop(void) {
-  uint16_t highpulse, lowpulse; // temporary storage timing
+  uint16_t highpulse, lowpulse;  // temporary storage timing
   highpulse = lowpulse = 0; // start out with no pulse length
   
   
-// while (digitalRead(IRpin)) { // this is too slow!
-
-    Serial.println(IRpin_PIN);
-    Serial.println(IRpin);
-    Serial.println(IRpin_PIN & (1 << IRpin));  
+//  while (digitalRead(IRpin)) { // this is too slow!
     while (IRpin_PIN & (1 << IRpin)) {
      // pin is still HIGH
 
      // count off another few microseconds
      highpulse++;
      delayMicroseconds(RESOLUTION);
-
-     Serial.print("highpulse: ");
-     Serial.println(highpulse);
 
      // If the pulse is too long, we 'timed out' - either nothing
      // was received or the code is finished, so print what
@@ -83,16 +63,11 @@ void loop(void) {
   pulses[currentpulse][0] = highpulse;
   
   // same as above
-  Serial.print(IRpin_PIN);
-  Serial.print(_BV(IRpin));
-  
   while (! (IRpin_PIN & _BV(IRpin))) {
-//    Serial.print("lowpulse:");
-//    Serial.println(lowpulse); 
-//    // pin is still LOW
+     // pin is still LOW
      lowpulse++;
      delayMicroseconds(RESOLUTION);
-     if ((lowpulse >= MAXPULSE) && (currentpulse != 0)) {
+     if ((lowpulse >= MAXPULSE)  && (currentpulse != 0)) {
        printpulses();
        currentpulse=0;
        return;
@@ -115,15 +90,22 @@ void printpulses(void) {
   
   // print it in a 'array' format
   Serial.println("int IRsignal[] = {");
-  Serial.println("// ON, OFF (in 10's of microseconds)");
+  Serial.println("// ON, OFF ");
   for (uint8_t i = 0; i < currentpulse-1; i++) {
-    Serial.print("\t"); // tab
-    Serial.print(pulses[i][1] * RESOLUTION / 10, DEC);
-    Serial.print(", ");
-    Serial.print(pulses[i+1][0] * RESOLUTION / 10, DEC);
-    Serial.println(",");
+    //Serial.print("\t"); // tab
+    Serial.print("pulseIR(");
+    Serial.print(pulses[i][1] * RESOLUTION , DEC);
+    Serial.print(");");
+    Serial.println("");
+    //Serial.print("\t");
+    Serial.print("delayMicroseconds(");
+    Serial.print(pulses[i+1][0] * RESOLUTION , DEC);
+    Serial.println(");");
+
   }
-  Serial.print("\t"); // tab
-  Serial.print(pulses[currentpulse-1][1] * RESOLUTION / 10, DEC);
-  Serial.print(", 0};");
+  //Serial.print("\t"); // tab
+  Serial.print("pulseIR(");
+  Serial.print(pulses[currentpulse-1][1] * RESOLUTION, DEC);
+  Serial.print(");");
+
 }
