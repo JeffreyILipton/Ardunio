@@ -1,12 +1,12 @@
 #include "pulseIR.h"
 #include "rawIRReader.h"
 #include "Stereo2Channel.h"
-#include "StereoAFD.h"
-#include "StereoDtuningAnt.h"
-#include "StereoDualMono.h"
-#include "StereoDvD.h"
+//#include "StereoAFD.h"
+//#include "StereoDtuningAnt.h"
+//#include "StereoDualMono.h"
+//#include "StereoFxModeMPXAudio.h"
+#include "StereoDvd.h"
 #include "StereoEnter.h"
-#include "StereoFxModeMPXAudio.h"
 #include "StereoLaptop.h"
 #include "StereoMainMenu.h"
 #include "StereoMovie.h"
@@ -25,13 +25,13 @@
 #include "TVBack.h"
 #include "TVinput.h"
 #include "TVIO.h"
-#include "TVMenu.h"
-#include "TVMenuBack.h"
-#include "TVMenuDown.h"
-#include "TVMenuLeft.h"
-#include "TVMenuOk.h"
-#include "TVMenuRight.h"
-#include "TVMenuUp.h"
+//#include "TVMenu.h"
+//#include "TVMenuBack.h"
+//#include "TVMenuDown.h"
+//#include "TVMenuLeft.h"
+//#include "TVMenuOk.h"
+//#include "TVMenuRight.h"
+//#include "TVMenuUp.h"
 #include "TVMute.h"
 #include "TVVolDown.h"
 #include "TVVolUp.h"
@@ -67,11 +67,41 @@ void loop()
             case 'u':
               SendTVVolUp();
               break;
+//            case 'a':
+//              SendTVMenu();
+//              break;
+            case 'b':
+              SendTVBack();
+              break;
+//            case 'c':
+//              SendTVMenuBack();
+//              break;
             case 'd':
               SendTVVolDown();
               break;   
+/*            case 'e':
+              SendTVMenuLeft();
+              break;
+            case 'f':
+              SendTVMenuOk();
+              break;
+            case 'g':
+              SendTVMenuRight();
+              break;
+            case 'h':
+              SendTVMenuUp();
+              break;
+*/          case 'i':
+              SendTVInput();
+              break;
+//            case 'j':
+//              SendTVMenuDown();
+//              break;
             case 'm':
               SendTVMute();
+              break;
+            case 'o':
+              SendTVOn();
               break;
           }
         break;
@@ -86,6 +116,63 @@ void loop()
             case 'm':
               SendStereoMute();
               break;
+            case 'a':
+              SendStereo2Channel();
+              break;
+//            case 'b':
+//              SendStereoAFD();
+//              break;
+//            case 'c':
+//              SendStereoDtuningAntCode();
+//              break;
+            case 'e':
+              SendStereoEnter();
+              break;
+            case 'f':
+              SendStereoMusic();
+              break;
+//            case 'g':
+//              SendStereoDualMono();
+//              break;
+//            case 'h':
+//              SendStereoFXMode();
+//              break;
+//            case 'i':
+//              SendStereoMainMenu();
+//              break;
+//            case 'j':
+//              SendStereoDvD();
+//              break;
+            case 'k':
+              SendStereoMovie();
+              break;
+            case 'l':
+              SendStereoLaptop();
+              break;
+            case 'n':
+              SendStereoVideo1();
+              break;
+            case 'o':
+              SendStereoVideo2();
+              break;
+            case 'p':
+              SendStereoPower();
+              break;
+            case 'v':
+              SendStereoPresetMinus();
+              break;
+            case 'w':
+              SendStereoPresetPlus();
+              break;
+            case 'x':
+              SendStereoTuner();
+              break;
+            case 'y':
+              SendStereoTuningMinus();
+              break;
+            case 'z':
+              SendStereoTuningPlus();
+              break;
           }
          break;   
       }
@@ -96,4 +183,197 @@ void loop()
 }
 
 
+void SendStereoDvD(){
+  pulseIR(2380);
+  delayMicroseconds(580);
+  pulseIR(1180);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(1160);
+  delayMicroseconds(600);
+  pulseIR(1180);
+  delayMicroseconds(580);
+  pulseIR(1180);
+  delayMicroseconds(600);
+  pulseIR(1160);
+  delayMicroseconds(600);
+  pulseIR(1160);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(600);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(1180);
+  delayMicroseconds(580);
+  pulseIR(1180);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(600);
+  delayMicroseconds(19200);
+  pulseIR(2380);
+  delayMicroseconds(580);
+  pulseIR(1180);
+  delayMicroseconds(580);
+  pulseIR(600);
+  delayMicroseconds(600);
+  pulseIR(1160);
+  delayMicroseconds(600);
+  pulseIR(1160);
+  delayMicroseconds(600);
+  pulseIR(1180);
+  delayMicroseconds(580);
+  pulseIR(1180);
+  delayMicroseconds(600);
+  pulseIR(1160);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(600);
+  delayMicroseconds(580);
+  pulseIR(600);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(1180);
+  delayMicroseconds(580);
+  pulseIR(1180);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(19220);
+  pulseIR(2360);
+  delayMicroseconds(600);
+  pulseIR(1180);
+  delayMicroseconds(580);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(1180);
+  delayMicroseconds(600);
+  pulseIR(1160);
+  delayMicroseconds(600);
+  pulseIR(1160);
+  delayMicroseconds(600);
+  pulseIR(1180);
+  delayMicroseconds(580);
+  pulseIR(1180);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(600);
+  delayMicroseconds(600);
+  pulseIR(1180);
+  delayMicroseconds(580);
+  pulseIR(1180);
+  delayMicroseconds(580);
+  pulseIR(600);
+  delayMicroseconds(580);
+  pulseIR(600);
+  delayMicroseconds(19200);
+  pulseIR(2380);
+  delayMicroseconds(600);
+  pulseIR(1160);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(1180);
+  delayMicroseconds(580);
+  pulseIR(1180);
+  delayMicroseconds(580);
+  pulseIR(1180);
+  delayMicroseconds(600);
+  pulseIR(1160);
+  delayMicroseconds(600);
+  pulseIR(1180);
+  delayMicroseconds(580);
+  pulseIR(600);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(1180);
+  delayMicroseconds(600);
+  pulseIR(1160);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(19220);
+  pulseIR(2380);
+  delayMicroseconds(580);
+  pulseIR(1180);
+  delayMicroseconds(580);
+  pulseIR(600);
+  delayMicroseconds(600);
+  pulseIR(1180);
+  delayMicroseconds(580);
+  pulseIR(1180);
+  delayMicroseconds(580);
+  pulseIR(1180);
+  delayMicroseconds(600);
+  pulseIR(1160);
+  delayMicroseconds(600);
+  pulseIR(1180);
+  delayMicroseconds(580);
+  pulseIR(600);
+  delayMicroseconds(580);
+  pulseIR(580);
+  delayMicroseconds(620);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(1160);
+  delayMicroseconds(620);
+  pulseIR(1160);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(19220);
+  pulseIR(2360);
+  delayMicroseconds(600);
+  pulseIR(1180);
+  delayMicroseconds(580);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(1180);
+  delayMicroseconds(600);
+  pulseIR(1160);
+  delayMicroseconds(600);
+  pulseIR(1180);
+  delayMicroseconds(580);
+  pulseIR(1180);
+  delayMicroseconds(600);
+  pulseIR(1160);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(600);
+  delayMicroseconds(600);
+  pulseIR(580);
+  delayMicroseconds(600);
+  pulseIR(1180);
+  delayMicroseconds(580);
+  pulseIR(1180);
+  delayMicroseconds(580);
+  pulseIR(600);
+  delayMicroseconds(600);
+  pulseIR(580);
+}
 

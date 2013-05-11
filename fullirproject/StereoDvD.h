@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include "pulseIR.h"
-void SendSteroDvD(){
+void SendStereoDvD(){
 
 pulseIR(2380);
 delayMicroseconds(580);
