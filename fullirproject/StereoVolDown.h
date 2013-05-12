@@ -1,7 +1,6 @@
 #include <Arduino.h>
 #include "pulseIR.h"
 void SendStereoVolDown(){
-
 pulseIR(2360);
 delayMicroseconds(600);
 pulseIR(1180);
