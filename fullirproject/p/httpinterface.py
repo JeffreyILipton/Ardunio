@@ -58,7 +58,7 @@ class HTTPInterface:
             return 'command failed'
         
 if __name__ == '__main__':
-    comport = "COM1"
+    comport = "COM10"
     baud = 9600
     ipport = 8080
     ipaddr='localhost'
