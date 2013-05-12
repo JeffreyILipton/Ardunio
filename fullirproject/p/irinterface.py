@@ -14,10 +14,10 @@ class IRInterface:
         return self.ser.isOpen()
     def write(self,towrite):
         if (not self.isready()):
-            return False;
+            return False
         else:
-            print "new: "+towrite
             self.ser.write(towrite)
+        return True
     
 
 if __name__ == '__main__':
