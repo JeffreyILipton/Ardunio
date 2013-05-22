@@ -1,6 +1,6 @@
 from bottle import *
 from irinterface import *
-
+from os import getcwd
 
 
 class HTTPInterface:
@@ -61,8 +61,8 @@ class HTTPInterface:
             
     #@route('/static/<filename:path>')
     def send_static(self,filename):
-        print "looking for /test/" + filename
-        return static_file(filename, root="C:\\Users\\Jeffrey\\Documents\\GitHub\\Ardunio\\fullirproject\\p\\test")
+        newroot = getcwd().replace("\\","\\\\")+"\\\\"+ "static"
+        return static_file(filename, root=newroot)
         
 if __name__ == '__main__':
     comport = "COM10"
