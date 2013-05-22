@@ -32,8 +32,10 @@ class HTTPInterface:
         return 'comport changed'
 
     #@route('/ui')
-    def interface(self):
-        return '<b>Hello, this is where the UI should be </b>!'
+    def mainui(self):
+        print self.send_static('main.html')
+        return self.send_static('main.html')
+        #'<b>Hello, this is where the UI should be </b>!'
     
     #@route('/stereo')
     def stereo_index(self):    
@@ -56,20 +58,26 @@ class HTTPInterface:
             return template('<b>Command t{{letter}} sent</b>!', letter=letter)
         else:
             return 'command failed'
+            
+    #@route('/static/<filename:path>')
+    def send_static(self,filename):
+        print "looking for /test/" + filename
+        return static_file(filename, root="C:\\Users\\Jeffrey\\Documents\\GitHub\\Ardunio\\fullirproject\\p\\test")
         
 if __name__ == '__main__':
     comport = "COM10"
     baud = 9600
-    ipport = 8080
+    ipport = 88
     ipaddr='localhost'
     app = Bottle()
     httpi = HTTPInterface(comport,baud)
     app.route('/settings')(httpi.settings_index)
     app.route('/settings',method = 'POST')(httpi.settings_post)
-    app.route('/ui')(httpi.interface)
+    app.route('/ui')(httpi.mainui)
     app.route('/stereo')(httpi.stereo_index)
     app.route('/stereo/:letter')(httpi.stereo_get)
     app.route('/tv')(httpi.tv_index)
     app.route('/tv/:letter')(httpi.tv_get)
+    app.route('/static/<filename:path>')(httpi.send_static)
     
     run(app,host=ipaddr, port=ipport)
