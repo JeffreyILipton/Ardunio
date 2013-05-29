@@ -67,8 +67,8 @@ class HTTPInterface:
 if __name__ == '__main__':
     comport = "COM10"
     baud = 9600
-    ipport = 88
-    ipaddr='localhost'
+    ipport = 8080
+    ipaddr='0.0.0.0' #'192.168.56.1' #'localhost'
     app = Bottle()
     httpi = HTTPInterface(comport,baud)
     app.route('/settings')(httpi.settings_index)
