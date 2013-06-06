@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/style.css"/>
+    <script src="/static/jquery-2.0.1.min.js"></script>
+    <script src="/static/remote.js"></script>
+</head>
+<body>
+    <table>
+        <tr class="navbar">
+            <td colspan="2"> <button type="button" class="nav left" ><<</button> </td>
+            <td colspan="2"> <b>TV</b> </td>
+            <td colspan="2"> <button type="button" class="nav right" >>></button> </td>
+        </tr>
+        <tr class="powerbar">
+            <td colspan="3"> <button type="button" class="wide tv" onclick="restGet('/tv/o')">tv</button> </td>
+            <td colspan="3"> </td>
+        </tr>
+        <tr class="volbar">
+            <td colspan="2" > <button type="button" class="tall mute" onclick="restGet('/tv/m')">M</button> </td>
+            <td colspan="2"> <button type="button" class="tall down" onclick="restGet('/tv/d')">D</button> </td>
+            <td colspan="2"> <button type="button" class="tall up" onclick="restGet('/tv/u')">U</button> </td>
+        </tr>
+        <tr>
+            <td colspan="6"> <button type="button" class="full input" onclick="restGet('/tv/i')">Input</button> </td>
+
+        </tr>
+    </table>
+</body>
+</html>

@@ -54,7 +54,7 @@ table {
 }
 
 button
-{        
+{    
 	width: 100px;
     height: 50px;
     display: inline-block;
@@ -137,6 +137,11 @@ button.wide
     width: 158px;
 }
 
+button.full
+{
+    width: 330px;
+}
+
 td{
     text-align: center;
 }
@@ -151,4 +156,8 @@ td{
 }
 .volbar{
     height:110px;
+}
+
+.tunning{
+    height:80px;
 }

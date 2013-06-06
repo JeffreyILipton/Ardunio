@@ -9,17 +9,25 @@
     <table>
         <tr class="navbar">
             <td colspan="2"> <button type="button" class="nav left" ><<</button> </td>
-            <td colspan="2"> <b>Main</b> </td>
+            <td colspan="2"> <b>Stereo</b> </td>
             <td colspan="2"> <button type="button" class="nav right" >>></button> </td>
         </tr>
         <tr class="powerbar">
-            <td colspan="3"> <button type="button" class="wide tv" onclick="restGet('/tv/o')">tv</button> </td>
             <td colspan="3"> <button type="button" class="wide stereo" onclick="restGet('/stereo/p')">Stereo</button> </td>
+            <td colspan="3"> </td>
         </tr>
         <tr class="volbar">
             <td colspan="2" > <button type="button" class="tall mute" onclick="restGet('/stereo/m')">M</button> </td>
             <td colspan="2"> <button type="button" class="tall down" onclick="restGet('/stereo/d')">D</button> </td>
             <td colspan="2"> <button type="button" class="tall up" onclick="restGet('/stereo/u')">U</button> </td>
+        </tr>
+        <tr >
+            <td colspan="3"> <button type="button" class="wide tunerminus" onclick="restGet('/stereo/y')">-|------</button> </td>
+            <td colspan="3"> <button type="button" class="wide tunerplus" onclick="restGet('/stereo/z')">------|-</button> </td>
+        </tr>
+        <tr class="tunning">
+            <td colspan="3"> <button type="button" class="wide presetminus" onclick="restGet('/stereo/v')"><<<<<</button> </td>
+            <td colspan="3"> <button type="button" class="wide presetplus" onclick="restGet('/stereo/w')">>>>>></button> </td>
         </tr>
         <tr>
             <td colspan="3"> <button type="button" class="wide vid1" onclick="restGet('/stereo/n')">Video 1</button> </td>

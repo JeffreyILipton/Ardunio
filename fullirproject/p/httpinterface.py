@@ -11,6 +11,7 @@ class HTTPInterface:
                 self.ir.connect(port,baud)
             except:
                 print "failed to open"
+
     #@route(/settings)
     def settings_index(self):
         return '''
@@ -33,31 +34,36 @@ class HTTPInterface:
 
     #@route('/ui')
     def mainui(self):
-        print self.send_static('main.html')
         return self.send_static('main.html')
         #'<b>Hello, this is where the UI should be </b>!'
     
     #@route('/stereo')
     def stereo_index(self):    
-        return '<b>THIS PAGE IS BLANK</b>!'
+        return self.send_static('stereo.html')
 
     #@route('/stereo/:letter')
     def stereo_get(self,letter=''):
-        if (self.ir.write("s"+letter)):
-            return template('<b>Command s{{letter}} sent</b>!', letter=letter)
+        if (self.ir.isready() ):
+            if (self.ir.write("s"+letter)):
+                return template('<b>Command s{{letter}} sent</b>!', letter=letter)
+            else:
+                return 'command failed'
         else:
-            return 'command failed'
+            return 'system not connected'
 
     #@route('/tv')
     def tv_index(self):    
-        return '<b>THIS PAGE IS BLANK</b>!'
+        return self.send_static('tv.html')
 
     #@route('/tv/:letter')
     def tv_get(self,letter=''):
-        if(self.ir.write("t"+letter)):
-            return template('<b>Command t{{letter}} sent</b>!', letter=letter)
+        if (self.ir.isready() ):
+            if(self.ir.write("t"+letter)):
+                return template('<b>Command t{{letter}} sent</b>!', letter=letter)
+            else:
+                return 'command failed'
         else:
-            return 'command failed'
+            return 'system not connected'
             
     #@route('/static/<filename:path>')
     def send_static(self,filename):
